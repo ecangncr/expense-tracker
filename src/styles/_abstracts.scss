@@ -1,0 +1,44 @@
+/** VARIABLES **/
+
+/** Break-points **/
+
+$xlarge: 1280px;
+$large: 992px;
+$medium: 800px;
+$small: 576px;
+
+/** Colors **/
+
+$bg: #f4f3fa;
+
+$white: #fff;
+$black: #000;
+$gray: #a1a0bd;
+$green: #4fd18b;
+
+$red: #d14f4f;
+$red-light: #f5dcdc;
+$primary: #4c49ed;
+$primary-light: #e4e3ff;
+
+/** MIXINS **/
+
+@mixin media($screensize) {
+    @if ($screensize == xlarge) {
+        @media (max-width: $xlarge) {
+            @content;
+        }
+    } @else if ($screensize == large) {
+        @media (max-width: $large) {
+            @content;
+        }
+    } @else if ($screensize == medium) {
+        @media (max-width: $medium) {
+            @content;
+        }
+    } @else if ($screensize == small) {
+        @media (max-width: $small) {
+            @content;
+        }
+    }
+}

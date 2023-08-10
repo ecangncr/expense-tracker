@@ -1,0 +1,21 @@
+@use "reset" as *;
+
+body {
+  background-color: $bg;
+  height: 100vh;
+  font-family: "Mulish", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr min(1440px, 94%) 1fr;
+  grid-template-rows: auto;
+}
+
+.container > * {
+  grid-column: 2;
+}
+
+.container > .fluid {
+  grid-column: 1 / -1;
+}
