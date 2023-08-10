@@ -1,0 +1,110 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 256px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    background-color: $white;
+    padding: 42px 26px 48px 26px;
+    align-items: center;
+    gap: 42px;
+
+    overflow: auto;
+    .logoWrapper {
+        display: flex;
+        max-width: 100%;
+    }
+    nav {
+        flex: 1;
+        display: flex;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 12px;
+
+        .navItem {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 14px 28px;
+
+            height: 54px;
+            border-radius: 6px;
+            width: 100%;
+            border-radius: 4px;
+            gap: 16px;
+            p {
+                color: $gray;
+
+                font-size: 17px;
+
+                font-weight: 800;
+            }
+
+            &:hover {
+                background: $primary-light;
+
+                p {
+                    color: $primary;
+                }
+                path {
+                    fill: $primary;
+                }
+            }
+
+            &:last-child {
+                margin-top: 30px;
+            }
+            &:first-child {
+                background: $primary-light;
+                p {
+                    color: $primary;
+                }
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+}
+
+@include media(large) {
+    .sidebar {
+        padding: 42px 26px 38px 26px;
+        gap: 30px;
+    }
+}
+
+@include media(medium) {
+    .sidebar {
+        width: 200px;
+        padding: 42px 16px 28px 16px;
+        gap: 18px;
+    }
+}
+
+@include media(small) {
+    .sidebar {
+        width: 150px;
+
+        padding-top: 12px;
+        gap: 18px;
+
+        nav {
+            margin-top: 10px !important;
+            .navItem {
+                padding: 22px 12px;
+
+                height: 34px;
+
+                border-radius: 4px;
+                gap: 8px;
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
