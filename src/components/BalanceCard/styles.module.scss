@@ -1,0 +1,175 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    width: 548px;
+    height: 268px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: $white;
+    box-shadow: 8px 13px 44px -6px #dfdbf6;
+
+    .wrapper {
+        display: flex;
+        width: 246px;
+        height: 158px;
+        flex-direction: column;
+
+        align-items: flex-start;
+        justify-content: center;
+        flex-shrink: 0;
+        margin: 84px 36px 48px 36px;
+
+        .title {
+            color: $black;
+
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+        .buttonArea {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+
+            .primaryButton {
+                display: flex;
+                padding: 14px 24px;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                border-radius: 46px;
+                background: $primary;
+
+                color: $white;
+                text-align: center;
+
+                font-size: 13px;
+
+                font-weight: 900;
+
+                letter-spacing: 0.52px;
+                text-transform: uppercase;
+            }
+            .secondaryButton {
+                display: flex;
+                padding: 14px 24px;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                border: 1px solid $primary;
+                border-radius: 46px;
+                background: $white;
+
+                color: $primary;
+                text-align: center;
+
+                font-size: 13px;
+
+                font-weight: 900;
+
+                letter-spacing: 0.52px;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .balanceWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        border-radius: 140px 20px 20px 140px;
+        background: $primary;
+        gap: 8px;
+
+        .count {
+            color: $white;
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+            .currency {
+                color: rgba(255, 255, 255, 0.31);
+
+                font-size: 18px;
+                margin-left: -4px;
+
+                font-weight: 800;
+            }
+        }
+        .info {
+            color: $white;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.04px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+    }
+}
+
+@include media(large) {
+    .card {
+        width: 448px;
+        height: 168px;
+
+        .wrapper {
+            width: 200px;
+            height: 100px;
+
+            margin: 50px 0px 48px 36px;
+
+            .title {
+                color: $black;
+
+                font-size: 20px;
+
+                font-weight: 900;
+            }
+
+            .buttonArea {
+                margin-top: 10px;
+
+                .primaryButton {
+                    padding: 8px 16px;
+
+                    font-size: 13px;
+                }
+                .secondaryButton {
+                    padding: 8px 16px;
+
+                    font-size: 13px;
+                }
+            }
+        }
+        .balanceWrapper {
+            width: 200px;
+            border-radius: 140px 20px 20px 140px;
+
+            .count {
+                font-size: 30px;
+            }
+            .info {
+                font-size: 10px;
+            }
+        }
+    }
+}
+@include media(medium) {
+    .card {
+        width: 400px;
+        height: 168px;
+
+        .count {
+            font-size: 26px !important;
+        }
+    }
+}
