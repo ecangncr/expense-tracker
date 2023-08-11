@@ -3,6 +3,6 @@ export interface ITransaction {
   type: "Income" | "Expense";
   amount: number;
   currency: string;
-  Date: Date;
+  date: string;
   explanation: string;
 }

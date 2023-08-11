@@ -4,6 +4,8 @@ import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import styles from "./styles.module.scss";
 import { ITransaction } from "@/interfaces";
+import { useSelector } from "react-redux";
+import { selectSite } from "@/stores/site-store";
 export default function TableCard() {
   const [typeFilter, setTypeFilter] = useState<ITransaction["type"] | string>(
     "None"
@@ -12,75 +14,10 @@ export default function TableCard() {
   const [currencyFilter, setCurrencyFilter] = useState<string>("None");
 
   const [filteredData, setFilteredData] = useState<ITransaction[]>([]);
-  const dummyData: ITransaction[] = [
-    {
-      id: 1,
-      type: "Expense",
-      amount: 1400,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 2,
-      type: "Expense",
-      amount: 500,
-      currency: "TRY",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 3,
-      type: "Income",
-      amount: 500,
-      currency: "TRY",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 4,
-      type: "Income",
-      amount: 500,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 5,
-      type: "Income",
-      amount: 500,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 6,
-      type: "Income",
-      amount: 500,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 7,
-      type: "Income",
-      amount: 500,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-    {
-      id: 8,
-      type: "Income",
-      amount: 500,
-      currency: "USD",
-      Date: new Date(19, 1, 2023),
-      explanation: "Deneme",
-    },
-  ];
+  const { transactions } = useSelector(selectSite);
 
   useEffect(() => {
-    let filtered = dummyData;
+    let filtered = transactions as ITransaction[];
 
     if (typeFilter && typeFilter !== "None") {
       filtered = filtered.filter((item) => item.type === typeFilter);

@@ -15,9 +15,7 @@ const TableBody: React.FC<Props> = ({ data }) => {
             <p>{item.type}</p>
             <p>{item.amount}</p>
             <p>{item.currency}</p>
-            <p>{`${
-              item.Date.getMonth() + 1
-            }/${item.Date.getDate()}/${item.Date.getFullYear()}`}</p>
+            <p>{item.date}</p>
             <p>{item.explanation}</p>
             <Actions item={item} />
           </div>
