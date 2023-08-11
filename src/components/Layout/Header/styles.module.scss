@@ -6,4 +6,22 @@
     justify-content: flex-end;
     padding: 0px 30px;
     flex-shrink: 0;
+
+    .currencyWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            color: $gray;
+
+            font-size: 17px;
+            font-weight: 800;
+        }
+    }
+}
+@include media(medium) {
+    .header {
+        justify-content: flex-start;
+    }
 }
