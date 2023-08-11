@@ -1,6 +1,7 @@
 import BalanceCard from "@/components/BalanceCard";
 import styles from "./styles.module.scss";
 import SummaryCard from "@/components/SummaryCard";
+import TableCard from "@/components/TableCard";
 export default function Home() {
   return (
     <div className={styles.home}>
@@ -11,7 +12,9 @@ export default function Home() {
           <SummaryCard title="Total Expense" count={2500.01} currency="USD" />
         </div>
       </div>
-      <div className={styles.tableArea}>Table</div>
+      <div className={styles.tableArea}>
+        <TableCard />
+      </div>
     </div>
   );
 }

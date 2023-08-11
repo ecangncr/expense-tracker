@@ -1,0 +1,25 @@
+.container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+        .dropdown {
+            display: block;
+        }
+    }
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -100%;
+    background-color: $bg;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: 8px 13px 44px -6px #dfdbf6;
+    padding: 8px;
+    min-width: 150px;
+    z-index: 1;
+}

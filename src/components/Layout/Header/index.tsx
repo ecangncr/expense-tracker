@@ -4,7 +4,6 @@ import styles from "./styles.module.scss";
 
 const Header: React.FC = () => {
   const handleCurrencyChange = (newCurrency: string) => {
-    // Yapılacak işlemi burada gerçekleştirebilirsiniz
     console.log("Seçilen para birimi:", newCurrency);
   };
   return (
