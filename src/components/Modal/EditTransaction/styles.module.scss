@@ -7,8 +7,6 @@
 
     margin-top: 10px;
 
-    width: 150px;
-
     form {
         display: flex;
 
@@ -63,5 +61,15 @@
                 opacity: 0.5;
             }
         }
+    }
+}
+@include media(medium) {
+    .card {
+        min-width: 400px;
+    }
+}
+@include media(small) {
+    .card {
+        min-width: 300px;
     }
 }

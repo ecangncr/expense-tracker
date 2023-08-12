@@ -59,3 +59,18 @@
         justify-content: center;
     }
 }
+
+@include media(medium) {
+    .modal {
+        min-width: 300px;
+    }
+}
+@include media(small) {
+    .modal {
+        min-width: 300px;
+
+        h2 {
+            font-size: 20px !important;
+        }
+    }
+}
