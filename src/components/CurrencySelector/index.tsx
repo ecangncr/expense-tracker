@@ -1,21 +1,24 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { actions as siteActions } from "@/stores/site-store";
+import { useSelector } from "react-redux";
 import { selectSite } from "@/stores/site-store";
+interface CurrencySelectorProps {
+  onChange: (newCurrency: string) => void;
+}
 
-const CurrencySelector: React.FC = () => {
+const CurrencySelector: React.FC<CurrencySelectorProps> = ({ onChange }) => {
   const { rates } = useSelector(selectSite);
   const currencies: string[] = Object.keys(rates);
-  const { currency } = useSelector(selectSite);
-  const dispatch = useDispatch();
+  const { currency: baseCurrency } = useSelector(selectSite);
+  const [currency, setCurrency] = useState(baseCurrency);
 
   const handleCurrencyChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newCurrency = event.target.value;
-    dispatch(siteActions.changeCurrency(newCurrency));
+    setCurrency(newCurrency);
+    onChange(newCurrency);
   };
 
   return (

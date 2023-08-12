@@ -6,6 +6,9 @@ import styles from "./styles.module.scss";
 import { ITransaction } from "@/interfaces";
 import { useSelector } from "react-redux";
 import { selectSite } from "@/stores/site-store";
+import { useCustomParams } from "@/utils";
+import AddTransaction from "../Modal/AddTransaction";
+
 export default function TableCard() {
   const [typeFilter, setTypeFilter] = useState<ITransaction["type"] | string>(
     "None"
@@ -28,7 +31,12 @@ export default function TableCard() {
     }
 
     setFilteredData(filtered);
-  }, [typeFilter, currencyFilter]);
+  }, [typeFilter, currencyFilter, transactions]);
+
+  const { searchParams } = useCustomParams();
+
+  const action = searchParams.get("action");
+  const id = searchParams.get("id");
 
   return (
     <div className={styles.card}>
@@ -39,6 +47,7 @@ export default function TableCard() {
         setCurrencyFilter={setCurrencyFilter}
       />
       <TableBody data={filteredData} />
+      {action === "create" && <AddTransaction />}
     </div>
   );
 }

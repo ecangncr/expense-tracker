@@ -16,7 +16,7 @@ const TableBody: React.FC<Props> = ({ data }) => {
             <p>{item.amount}</p>
             <p>{item.currency}</p>
             <p>{item.date}</p>
-            <p>{item.explanation}</p>
+            <p>{item.explanation ? item.explanation : "-"}</p>
             <Actions item={item} />
           </div>
         ))
