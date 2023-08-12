@@ -16,7 +16,7 @@ const AddTransactionModal: React.FC = () => {
 
   const { currency: baseCurrency } = useSelector(selectSite);
   const [amount, setAmount] = useState<number>(1);
-  const [currency, setCurrency] = useState(baseCurrency);
+  const [currency, setCurrency] = useState(baseCurrency || "EUR");
   const [explanation, setExplanation] = useState("");
 
   const dispatch = useDispatch();
@@ -44,11 +44,14 @@ const AddTransactionModal: React.FC = () => {
       date,
     };
     dispatch(siteActions.addTransaction(data));
-    updateSearchParams({
-      action: "",
-      id: "",
-      type: "",
-    });
+
+    setTimeout(() => {
+      updateSearchParams({
+        action: "",
+        id: "",
+        type: "",
+      });
+    }, 300);
   };
 
   return (

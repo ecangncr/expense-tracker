@@ -20,13 +20,12 @@ const EditTransactionModal: React.FC = () => {
     (transaction) => transaction.id.toString() === id
   );
 
-  console.log("transaction", transactions);
-  console.log("selectedTransaction", selectedTransaction);
-
   const [amount, setAmount] = useState<number | undefined>(
-    selectedTransaction?.amount
+    selectedTransaction?.amount || 1
   );
-  const [currency, setCurrency] = useState(selectedTransaction?.currency);
+  const [currency, setCurrency] = useState(
+    selectedTransaction?.currency || "EUR"
+  );
   const [explanation, setExplanation] = useState<string | undefined>(
     selectedTransaction?.explanation
   );
@@ -54,11 +53,13 @@ const EditTransactionModal: React.FC = () => {
       date,
     };
     dispatch(siteActions.changeTransaction(data));
-    updateSearchParams({
-      action: "",
-      id: "",
-      type: "",
-    });
+    setTimeout(() => {
+      updateSearchParams({
+        action: "",
+        id: "",
+        type: "",
+      });
+    }, 300);
   };
 
   return (

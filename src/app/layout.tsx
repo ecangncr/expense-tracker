@@ -21,11 +21,11 @@ export default async function RootLayout({
   const state = store.getState();
   return (
     <html lang="en" className={mulishFontFamily.className}>
-      <Providers preloadedState={state}>
-        <body className="container">
+      <body className="container">
+        <Providers preloadedState={state}>
           <DashboardLayout>{children}</DashboardLayout>
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }

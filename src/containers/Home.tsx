@@ -37,7 +37,7 @@ export default function Home() {
     setTotalBalance(_totalBalance);
     setTotalExpense(_totalExpense);
     setTotalIncome(_totalIncome);
-  }, [transactions, currency]);
+  }, [transactions, currency, rates]);
 
   return (
     <div className={styles.home}>
