@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { selectSite } from "@/stores/site-store";
 import { useCustomParams } from "@/utils";
 import AddTransaction from "../Modal/AddTransaction";
+import EditTransaction from "../Modal/EditTransaction";
 
 export default function TableCard() {
   const [typeFilter, setTypeFilter] = useState<ITransaction["type"] | string>(
@@ -48,6 +49,7 @@ export default function TableCard() {
       />
       <TableBody data={filteredData} />
       {action === "create" && <AddTransaction />}
+      {action === "edit" && id && <EditTransaction />}
     </div>
   );
 }

@@ -8,16 +8,28 @@ import { useState } from "react";
 import CurrencySelector from "@/components/CurrencySelector";
 import { useDispatch, useSelector } from "react-redux";
 import { actions as siteActions, selectSite } from "@/stores/site-store";
+import { ITransaction } from "@/interfaces";
 
-const AddTransactionModal: React.FC = () => {
+const EditTransactionModal: React.FC = () => {
   const { updateSearchParams, searchParams } = useCustomParams();
+  const { transactions } = useSelector(selectSite);
 
-  const type = searchParams.get("type");
+  const id = searchParams.get("id");
 
-  const { currency: baseCurrency } = useSelector(selectSite);
-  const [amount, setAmount] = useState<number>(1);
-  const [currency, setCurrency] = useState(baseCurrency);
-  const [explanation, setExplanation] = useState("");
+  const selectedTransaction = (transactions as ITransaction[])?.find(
+    (transaction) => transaction.id.toString() === id
+  );
+
+  console.log("transaction", transactions);
+  console.log("selectedTransaction", selectedTransaction);
+
+  const [amount, setAmount] = useState<number | undefined>(
+    selectedTransaction?.amount
+  );
+  const [currency, setCurrency] = useState(selectedTransaction?.currency);
+  const [explanation, setExplanation] = useState<string | undefined>(
+    selectedTransaction?.explanation
+  );
 
   const dispatch = useDispatch();
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,17 +45,15 @@ const AddTransactionModal: React.FC = () => {
 
     const date = `${day}/${month}/${year} ${hours}:${minutes}`;
 
-    const id = Math.floor((Math.random() + 1) * 1000000);
-
     const data = {
-      id,
-      type,
+      id: Number(id),
+      type: selectedTransaction?.type,
       amount,
       currency,
       explanation,
       date,
     };
-    dispatch(siteActions.addTransaction(data));
+    dispatch(siteActions.changeTransaction(data));
     updateSearchParams({
       action: "",
       id: "",
@@ -52,7 +62,7 @@ const AddTransactionModal: React.FC = () => {
   };
 
   return (
-    <Modal title={`Create ${type} Transaction`}>
+    <Modal title={`Edit Transaction`}>
       <div className={styles.card}>
         <form onSubmit={onSubmit}>
           <div className={styles.inputWrapper}>
@@ -71,7 +81,7 @@ const AddTransactionModal: React.FC = () => {
           <div className={styles.inputWrapper}>
             <label htmlFor="currency">Currency</label>
             <div className={styles.currencyWrapper}>
-              <CurrencySelector onChange={setCurrency} />
+              <CurrencySelector _currency={currency} onChange={setCurrency} />
             </div>
           </div>
           <div className={styles.inputWrapper}>
@@ -93,4 +103,4 @@ const AddTransactionModal: React.FC = () => {
   );
 };
 
-export default AddTransactionModal;
+export default EditTransactionModal;

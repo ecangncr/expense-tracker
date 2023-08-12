@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./styles.module.scss"; // SCSS dosyası
+import styles from "./styles.module.scss";
 import ThreeDotsIcon from "../Icons/ThreeDots";
 
 interface Props {

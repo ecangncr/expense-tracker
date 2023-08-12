@@ -5,13 +5,19 @@ import { useSelector } from "react-redux";
 import { selectSite } from "@/stores/site-store";
 interface CurrencySelectorProps {
   onChange: (newCurrency: string) => void;
+  _currency?: string;
 }
 
-const CurrencySelector: React.FC<CurrencySelectorProps> = ({ onChange }) => {
+const CurrencySelector: React.FC<CurrencySelectorProps> = ({
+  onChange,
+  _currency,
+}) => {
   const { rates } = useSelector(selectSite);
   const currencies: string[] = Object.keys(rates);
   const { currency: baseCurrency } = useSelector(selectSite);
-  const [currency, setCurrency] = useState(baseCurrency);
+  const [currency, setCurrency] = useState(
+    _currency ? _currency : baseCurrency
+  );
 
   const handleCurrencyChange = (
     event: React.ChangeEvent<HTMLSelectElement>

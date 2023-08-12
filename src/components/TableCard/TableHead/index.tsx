@@ -3,6 +3,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./styles.module.scss";
 import Dropdown from "@/components/Dropdown";
 import { ITransaction } from "@/interfaces";
+import { useSelector } from "react-redux";
+import { selectSite } from "@/stores/site-store";
 
 interface Props {
   typeFilter: ITransaction["type"] | string;
@@ -19,7 +21,8 @@ const TableHead: React.FC<Props> = ({
 }) => {
   const typleList: ITransaction["type"][] = ["Income", "Expense"];
 
-  const currencyList = ["USD", "TRY", "CAD"];
+  const { rates } = useSelector(selectSite);
+  const currencies: string[] = Object.keys(rates);
 
   const handleClear = () => {
     setCurrencyFilter("None");
@@ -46,7 +49,7 @@ const TableHead: React.FC<Props> = ({
               value={currencyFilter || "None"}
               onChange={(e) => setCurrencyFilter(e.target.value)}>
               <option value="None">None</option>
-              {currencyList.map((option) => (
+              {currencies.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
