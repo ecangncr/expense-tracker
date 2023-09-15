@@ -1,7 +1,7 @@
 "use client";
 import BalanceCard from "@/components/BalanceCard";
 import styles from "./styles.module.scss";
-import SummaryCard from "@/components/Summary Card";
+import SummaryCard from "@/components/SummaryCard";
 import TableCard from "@/components/TableCard";
 import { selectSite } from "@/stores/site-store";
 import { useSelector } from "react-redux";

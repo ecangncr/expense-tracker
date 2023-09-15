@@ -12,12 +12,16 @@ const initialState: {
 };
 
 export const getRates = createAsyncThunk("site/getRates", async () => {
-  const response = await fetch("https://redterrex.onrender.com/users/finance", {
-    next: { revalidate: 3600 },
-  });
+  const API_KEY = process.env.API_KEY;
+  const response = await fetch(
+    `https://api.freecurrencyapi.com/v1/latest?apikey=${API_KEY}&currencies=&base_currency=EUR`,
+    {
+      next: { revalidate: 3600 },
+    }
+  );
   const rates = await response.json();
 
-  return rates["finance"];
+  return rates["data"];
 });
 
 export const { reducer, actions } = createSlice({

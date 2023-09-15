@@ -16,7 +16,7 @@ const SummaryCard: React.FC<SummaryCardProps> = ({
     <div className={styles.summaryCard}>
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.count}>
-        {count} <span className={styles.currency}>{currency}</span>
+        {count.toFixed(2)} <span className={styles.currency}>{currency}</span>
       </p>
     </div>
   );
